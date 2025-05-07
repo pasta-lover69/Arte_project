@@ -1,0 +1,394 @@
+.modal {
+    position: fixed;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Start slightly smaller */
+    
+    /* Remove display: none; (visibility will handle hiding) */
+    width: 570px;
+    height: max-content;
+    /* Initially hidden */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+
+    background: linear-gradient(135deg, rgba(255, 255, 247, 0.938), #fffcd2, #f4f8e9);
+    border: 2px solid rgb(95, 95, 95);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* When targeted, make modal visible */
+.modal:target {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1); /* Expand smoothly */
+}
+  /* ---------------------------
+     Modal Content (Inside .modal)
+  --------------------------- */
+  .modal-content {
+    /* Extra container if you need it;
+       can expand or remove as needed. */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color:rgba(198, 198, 58, 0);
+    display: flex;
+    border: none;
+    flex-direction: column;
+    /* No specific styling needed, but you can add if you like */
+  }
+  .modal h2{
+    text-align: center;
+}
+  /* Close button styling */
+  .close {
+    position: absolute;
+    padding: 7px 10px 7px 10px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.151);
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+.close:hover{
+  background-color: rgba(0, 0, 0, 0.608);
+  color: white;
+}
+  .modal-content{
+    width: 100%;
+  }
+  /* ---------------------------
+     Form Elements & Grid Layout
+  --------------------------- */
+  form {
+    display: grid;
+    /* Two columns, each 250px wide */
+    grid-template-columns: repeat(2,250px);
+    /* Space between columns and rows */
+    gap: 1rem;
+    margin-top: 40px; /* Optional spacing above the form */
+  }
+
+  /* Each form group stacks label and input */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Needed for floating label */
+    margin-bottom: 35px;
+    text-align: center;
+    width: 100%;
+    height: 25px;
+  }
+
+  /* The label is placed after the input. 
+     Use placeholder=" " in the input for the floating label effect. */
+  .form-group input {
+    width: 100%;
+    border: 2px solid rgb(154, 154, 134);
+    padding: 10px;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #333;
+    background-color: transparent;
+    outline: none;
+  }
+
+  .form-group.service{
+    grid-column: 1 / -1;
+    height: 40px;
+    margin-bottom: 0;
+
+  }
+  .form-group.service select:hover{
+    background-color: rgba(63, 20, 20, 0.111);
+  }
+
+  .form-group.service select{
+    appearance: none;
+    border-radius: 15px;
+    border: 2px solid rgb(140, 122, 122);
+    text-align: center;
+    background-color: rgb(244, 244, 213);
+    height: 100%;
+ 
+  }
+  .form-group.mess {
+    grid-column: 1 / -1; /* Spans both columns */
+    margin-bottom: 0;
+    margin-top: 5px;
+  }
+
+  .form-group input:focus {
+    background-color: #ef444400;
+  }
+  
+  .form-group label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none; /* Don’t block clicks on input */
+    transition: 0.2s ease all;
+    color: #888;
+    font-weight: 700;
+  }
+
+  /* Floating label effect:
+     If input is focused or not empty, move label up */
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label {
+    top: -20px;
+    font-size: 12px;
+    color: rgb(207, 172, 172);
+  }
+
+  /* Make the button span both columns */
+  form button {
+    grid-column: 1 / -1;  /* or grid-column: span 2; */
+    justify-self: center;
+  
+    margin-top: 1rem;
+  }
+
+  /* Button styling */
+  button,
+  input[type="submit"] {
+    background-color: #dceda3;
+    color: #fff;
+    border: none;
+    padding: 7px;
+    margin-bottom: 15px;
+    height: 50px;
+    border-radius: 8px;
+    color: rgb(83, 81, 81);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  button:hover,
+  input[type="submit"]:hover {
+    background-color: #d0ffb1;
+  }
+
+  /* ---------------------------
+     Success Message Styling
+  --------------------------- */
+
+  .close-checkbox-mess {
+    display: none;
+}
+.close-checkbox-mess:checked ~ .success-message {
+    display: none;
+}
+
+.close-mess {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+}
+/* Your other .success-message styles here */
+.success-message {
+    position: fixed;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: max-content;
+    border: 2px solid rgb(198, 198, 58);
+    color: #155724;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 247, 0.938), #fffcd2, #f4f8e9);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+  .success-message b {
+    width: max-content;
+    border-radius: 7px;
+    padding: 7px;
+  }
+  .success-message input {
+    text-align: center;
+  }
+  .success-messag label {
+    right: 0;
+    background-color: #33333316;
+    color: rgb(233, 237, 217);
+  }
+
+  .btn-edit{
+    background-color: #dceda3;
+    color: #fff;
+    border: none;
+    padding: 7px;
+    text-align: center;
+    margin-bottom: 15px;
+    height: 50px;
+    border-radius: 8px;
+    color: rgb(83, 81, 81);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+
+
+  .btn-edit:hover{
+    background-color: #d0ffb1;
+
+  }
+  .code{
+    padding: 7px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: rgb(243, 243, 235);
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  @media(max-width:450px){
+    .success-message {
+        width: 320px;
+    }
+  }
+
+  /* STYLE FOR AFTER USER BOOKING */
+
+    .user-msg-container{
+        position: absolute;
+        top: 100px;
+        width: 100%;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+        display: none;
+        height: 11vh;
+        border: 2px solid rgb(198, 198, 58);
+        color: #155724;
+        padding: 20px;
+        background: linear-gradient(135deg, beige, #f5d5a4, #c7b7a3);
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+        
+        animation: fade 15s ease forwards;
+        transition: all 5s ease;
+        
+
+
+    }
+    .user-msg-container p b{
+        font-size: 1.1rem;
+    }
+    @keyframes fade{
+        0%{
+            opacity: 1;
+        }
+
+       
+        100%{
+            opacity: 0;
+        }
+    }
+  /* ---------------------------
+     Responsive Breakpoints
+  --------------------------- */
+@media(min-width:455px)and (max-width:954px){
+    .modal {
+        width: 440px;
+    }
+    form {
+  
+ 
+        grid-template-columns: repeat(2,190px);
+ 
+      }
+}
+
+@media(max-width:455px){
+    .modal {
+        width: 320px;
+        padding: 15px;
+        height: 480px;
+       }
+    form {
+  
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group{
+        padding: 0;
+        margin-bottom: 0;
+        margin: 0;
+        height: 30px;
+        width: 100%;
+      }
+      .form-group input{
+        width: 100%;
+   
+        padding: 0;
+      }
+      form {
+        margin-top: 0; /* Optional spacing above the form */
+      }
+      .modal-content{
+        margin-top: 25px;
+    
+      }
+      .form-group label{
+        top: 5px;
+        font-size: 0.8rem;
+      }
+      .form-group input:focus + label,
+      .form-group input:not(:placeholder-shown) + label {
+        top: -17px;
+    
+      }
+   
+      
+}
+
+
+
+#review-modal:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+#booking-modal:target{
+    background-color: red;
+    visibility: visible;
+
+    display: block;
+    opacity: 1;
+}
+
+@media(max-width:455px){
+    .modal{
+        height: 80vh;
+    }
+    .form-group.service{
+        height: 35px;
+    }
+    .form-group input{
+        padding-left: 15px;
+    }
+}

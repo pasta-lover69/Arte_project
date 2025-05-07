@@ -1,0 +1,33 @@
+.service-container {
+    position: fixed;
+    top: 20%;
+    left: 40%;
+ 
+ 
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transform: translateY(-200%);
+    z-index: 1000;
+    transition: all 0.3s ease;
+
+}
+
+/* Show when checkbox is checked */
+#toggleoff:checked ~ .service-container {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+    
+}
+
+/* Close button styling */
+.close {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

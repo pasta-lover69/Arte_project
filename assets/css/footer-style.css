@@ -1,0 +1,32 @@
+
+.footer{
+    width: 100%;
+    position:relative;
+    display: flex;
+    background-color: rgb(68, 67, 67);
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 15px;
+}
+
+.footer li{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.footer a{
+    color: white;
+}
+.footer a:hover{
+    color: black;
+}
+
+
+.contacts-box ul li{
+    display: flex;
+}
+@media(max-width:400px){
+    .footer a{
+        font-size: 0.7rem;
+    }
+}

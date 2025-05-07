@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+input {
+    caret-color: transparent; /* Hides the blinking cursor */
+}
+
+input:focus {
+    caret-color: auto; /* Shows the cursor only when focused */
+}
+
+
+p,
+ span,
+  div {
+    caret-color: transparent; /* Hide blinking cursor */
+}
+
+
+h1,h2,h3,h4,h5,h6{
+    caret-color: transparent; 
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
