@@ -40,6 +40,14 @@ if (session_status() == PHP_SESSION_NONE) {
             color: gold;
             font-size: 1.2em;
         }
+        /* Animation Styling */
+        .fade-in {
+            opacity: 0;
+        }
+
+        .slide-in {
+            transform: translateX(-100px);
+        }
     </style>
 </head>
 <body>
@@ -65,11 +73,11 @@ if (session_status() == PHP_SESSION_NONE) {
       <section class="cover_section">
         <div class="container_cover">
             <div class="cover_img">
-                <img src="./assets/imgs/cover.jpg" alt="About Us Image">
+                <img src="./assets/imgs/cover.jpg" alt="About Us Image" class="fade-in">
             </div>
             <div class="content">
-                <h1>About Us</h1>
-                <p>Arte Aesthetic & Wellness Services is a local beauty lounge that truly has it all, including new innovative technology to give you the highest quality of services. Our latest aesthetic technology, great customer service, and variety of artistic services make this place perfect for a full spa getaway.</p>
+                <h1 class="slide-in">About Us</h1>
+                <p class="fade-in">Arte Aesthetic & Wellness Services is a local beauty lounge that truly has it all, including new innovative technology to give you the highest quality of services. Our latest aesthetic technology, great customer service, and variety of artistic services make this place perfect for a full spa getaway.</p>
             </div>
         </div>
     </section>
@@ -232,6 +240,26 @@ if (session_status() == PHP_SESSION_NONE) {
         ?>
     </div>
 <?php endif; ?>
+
+<script>
+    // JavaScript for Animations
+    document.addEventListener('DOMContentLoaded', () => {
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const slideInElements = document.querySelectorAll('.slide-in');
+
+        fadeInElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transition = 'opacity 1.5s ease-in-out';
+            setTimeout(() => (el.style.opacity = '1'), 500);
+        });
+
+        slideInElements.forEach(el => {
+            el.style.transform = 'translateX(-100px)';
+            el.style.transition = 'transform 1.5s ease-in-out';
+            setTimeout(() => (el.style.transform = 'translateX(0)'), 500);
+        });
+    });
+</script>
 
 </body>
 </html>

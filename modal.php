@@ -3,7 +3,7 @@ include 'config/db_connect_arte.php';
 include 'config/get_service.php';
 ?>
 <div id="booking-modal" class="modal">
-    <a href="#" class="close">×</a>
+    <a href="#" class="close" onclick="closeModal()">×</a>
     <h2>Book an Appointment</h2>
     <div class="modal-content">
         <form method="POST" action="pages/booking_process.php">
@@ -45,6 +45,31 @@ include 'config/get_service.php';
         </form>
     </div>
 </div>
+
+<script>
+    // JavaScript for modal interactivity
+    function closeModal() {
+        const modal = document.getElementById('booking-modal');
+        modal.style.opacity = '0';
+        modal.style.visibility = 'hidden';
+    }
+
+    function openModal() {
+        const modal = document.getElementById('booking-modal');
+        modal.style.opacity = '1';
+        modal.style.visibility = 'visible';
+    }
+</script>
+
+<style>
+    /* Responsive Modal Styling */
+    @media (max-width: 768px) {
+        .modal {
+            width: 90%;
+            height: auto;
+        }
+    }
+</style>
 
 <!-- C -->
 <?php if (isset($_GET["review"]) && isset($_SESSION["booking_details"])): ?>

@@ -659,3 +659,30 @@ main {
 @media (max-height:680px) {
 
 }
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .hero-img-container img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .promo-container {
+        flex-direction: column;
+    }
+
+    .promo-item-box {
+        margin-bottom: 20px;
+    }
+}

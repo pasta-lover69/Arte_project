@@ -33,4 +33,40 @@
            </li>
         </ul>
         </div>
+        <button id="back-to-top" onclick="scrollToTop()">↑</button>
   </footer>
+
+<script>
+    // JavaScript for Back-to-Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+<style>
+    /* Back-to-Top Button Styling */
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        background-color: #987b67;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+</style>
