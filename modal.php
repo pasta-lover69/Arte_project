@@ -1,62 +1,46 @@
-<?php   
-        include 'config/db_connect_arte.php';
-
-         include 'config/get_service.php'; 
+<?php
+include 'config/db_connect_arte.php';
+include 'config/get_service.php';
 ?>
 <div id="booking-modal" class="modal">
     <a href="#" class="close">×</a>
     <h2>Book an Appointment</h2>
-
     <div class="modal-content">
-
-        <form method="POST" action="">
-           
+        <form method="POST" action="pages/booking_process.php">
             <div class="form-group">
-                <input type="text" id="firstname" name="firstname" required placeholder=" " pattern="^[A-Za-z]+$" title="Please enter name"  />
+                <input type="text" id="firstname" name="firstname" required placeholder=" " pattern="^[A-Za-z]+$" title="Please enter a valid name" />
                 <label for="firstname">Firstname:</label>
             </div>
-            
             <div class="form-group">
-                <input type="text" id="lastname" name="lastname" required placeholder=" " pattern="^[A-Za-z]+$" title="Please enter name" />
+                <input type="text" id="lastname" name="lastname" required placeholder=" " pattern="^[A-Za-z]+$" title="Please enter a valid name" />
                 <label for="lastname">Lastname:</label>
             </div>
-
-       
-
             <div class="form-group">
-                <input type="text" id="phone" name="phone" required placeholder=" "pattern="^09\d{8,9}$" title="Enter 11 degits and start 09"  />
+                <input type="text" id="phone" name="phone" required placeholder=" " pattern="^09\d{8,9}$" title="Enter 11 digits starting with 09" />
                 <label for="phone">Contact:</label>
             </div>
-            
-
             <div class="form-group">
-                <input type="date" id="appointment_date" name="appointment_date" required placeholder=" " min="2025-01-01" max="2025-12-31"/>
+                <input type="date" id="appointment_date" name="appointment_date" required placeholder=" " min="<?= date('Y-m-d') ?>" />
                 <label for="appointment_date">Appointment Date:</label>
             </div>
-
             <div class="form-group">
                 <input type="time" id="appointment_time" name="appointment_time" required placeholder=" " min="09:00" max="18:00" />
                 <label for="appointment_time">Appointment Time:</label>
             </div>
-
-
-
             <div class="form-group service">
                 <select id="service" name="service" required>
                     <option value="">Select a service</option>
                     <?php foreach ($services as $service): ?>
-                        <option value="<?php echo ($service['srv_name']); ?>">
-                            <?php echo ($service['srv_name']) . " - ₱" . number_format($service['srv_price'], 2); ?>
+                        <option value="<?= htmlspecialchars($service['srv_name']) ?>">
+                            <?= htmlspecialchars($service['srv_name']) . " - ₱" . number_format($service['srv_price'], 2) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
             </div>
-
             <div class="form-group mess">
-                <input type="text" id="message" name="message"  placeholder=" " />
+                <input type="text" id="message" name="message" placeholder=" " />
                 <label for="message">Message:</label>
             </div>
-
             <button type="submit" name="review">Review & Confirm</button>
         </form>
     </div>

@@ -25,7 +25,7 @@ error_log("Review Text: " . $reviewText);
 error_log("Rating: " . $rating);
 error_log("Show Name: " . $showName);
 
-$sql_select = "SELECT appointment_id FROM tblappointments WHERE unique_code = ?";
+$sql_select = "SELECT appointment_id, customer_id FROM tblappointments WHERE unique_code = ?";
 $stmt_select = $conn->prepare($sql_select);
 
 if ($stmt_select === false) {
@@ -39,6 +39,7 @@ if ($stmt_select->execute()) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $appointmentID = $row['appointment_id'];
+        $customer_id = $row['customer_id'];
     } else {
         die('Appointment not found.');
     }
@@ -47,29 +48,6 @@ if ($stmt_select->execute()) {
 }
 
 $stmt_select->close();
-
-$sql_select2 = "SELECT customer_id FROM tblappointments WHERE unique_code = ?";
-$stmt_select2 = $conn->prepare($sql_select2);
-
-if ($stmt_select2 === false) {
-    die('Prepare failed (select): ' . $conn->error);
-}
-
-$stmt_select2->bind_param("s", $unique_code);
-
-if ($stmt_select2->execute()) {
-    $result = $stmt_select2->get_result();
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $customer_id = $row['customer_id'];
-    } else {
-        die('Appointment not found.');
-    }
-} else {
-    die('Error retrieving customer_id: ' . $stmt_select2->error);
-}
-
-$stmt_select2->close();
 
 $check_sql = "SELECT COUNT(*) FROM tblreviews WHERE appointment_id = ?";
 $check_stmt = $conn->prepare($check_sql);
@@ -91,7 +69,7 @@ if ($review_count > 0) {
     exit;
 }
 
-$sql_insert = "INSERT INTO tblreviews (appointment_id, customer_id, Rating, ReviewText, ShowName) VALUES (?, ?, ?, ?, ?)";
+$sql_insert = "INSERT INTO tblreviews (appointment_id, customer_id, rating, review_text, show_name) VALUES (?, ?, ?, ?, ?)";
 $stmt_insert = $conn->prepare($sql_insert);
 
 if ($stmt_insert === false) {
@@ -101,7 +79,7 @@ if ($stmt_insert === false) {
 $stmt_insert->bind_param("iiiss", $appointmentID, $customer_id, $rating, $reviewText, $showName);
 
 if ($stmt_insert->execute()) {
-    header("Location: http://localhost/Arte_project/aboutus.php");
+    header("Location: ../aboutus.php");
     exit();
 } else {
     echo 'Error submitting review: ' . $stmt_insert->error;

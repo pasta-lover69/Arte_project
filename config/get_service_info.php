@@ -1,5 +1,5 @@
 <?php
-include 'db_connect_arte.php';// Database connection
+include 'db_connect_arte.php'; // Database connection
 
 $serviceDetails = null; // Default: No service selected
 
