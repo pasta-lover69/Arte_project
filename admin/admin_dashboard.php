@@ -9,7 +9,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 }
 ?>
 
-<link rel="stylesheet" href="aa-style.css">
+<head>
+    <!-- Replace multiple CSS links with single consolidated file -->
+    <link rel="stylesheet" href="admin-styles.css?v=<?php echo time(); ?>">
+</head>
 
 <div class="admin-container">
     <div class="title"><h2>Admin Dashboard</h2></div>

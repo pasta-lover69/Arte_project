@@ -18,7 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<link rel="stylesheet" href="admin_login.css">
+<head>
+    <!-- Replace multiple CSS links with single consolidated file -->
+    <link rel="stylesheet" href="admin-styles.css?v=<?php echo time(); ?>">
+</head>
 
 
 <div class="login-container">

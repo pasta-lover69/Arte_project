@@ -70,7 +70,10 @@ function displayAppointmentsByStatus($conn, $status) {
 }
 ?>
 
-<link rel="stylesheet" href="aa-style.css">
+<head>
+    <!-- Replace multiple CSS links with single consolidated file -->
+    <link rel="stylesheet" href="admin-styles.css?v=<?php echo time(); ?>">
+</head>
 
     <h2 style="background-color:aqua; padding: 30px; background-color: rgb(42, 42, 42); font-size: 30px; color: white;">
     Admin Dashboard - Appointment Status

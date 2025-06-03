@@ -52,7 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<link rel="stylesheet" href="edit_service.css">
+<head>
+    <!-- Replace multiple CSS links with single consolidated file -->
+    <link rel="stylesheet" href="admin-styles.css?v=<?php echo time(); ?>">
+</head>
 <a href="admin_dashboard.php" style="padding: 7px; background-color: blanchedalmond; color: black; width: max-content; position: absolute;top:0;left:0;"> back to dashboard</a>
 <div class="edit-container" style="max-width: 600px; margin: 20px auto;background-color:beige; padding: 20px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
   <h2 style="margin-bottom: 20px;">Edit Appointment</h2>

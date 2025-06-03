@@ -1,0 +1,107 @@
+/* Consolidated admin styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Admin Container Styles */
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f4f4;
+    color: #d4d4d4;
+}
+
+/* Login Container Styles */
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10vh;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.container input {
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Navigation Styles */
+.title {
+    font-size: 2.5em;
+    background-color: rgb(42, 42, 42);
+    padding-left: 40px;
+}
+
+.navigation {
+    flex-direction: row;
+    background-color: rgb(42, 42, 42);
+    padding: 20px;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.navigation a {
+    list-style: none;
+    text-decoration: none;
+    color: #d4d4d4;
+    padding-left: 40px;
+}
+
+.navigation a:hover {
+    color: red;
+}
+
+/* Table Styles */
+.mesa {
+    background-color: rgb(225, 225, 225);
+}
+
+.mesa table {
+    width: 100%;
+}
+
+.mesa th {
+    background-color: #d4d4d4;
+}
+
+.mesa td {
+    padding: 10px;
+    background-color: #d4d4d4;
+}
+
+/* Service Styles */
+.add-service {
+    background-color: rgb(42, 42, 42);
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
