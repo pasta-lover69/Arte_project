@@ -1,0 +1,15 @@
+// filepath: c:\JayvienMocallay\Collab Projects\Arte_project\.gitattributes
+# Set PHP as the primary language
+*.php linguist-language=PHP
+
+# Exclude certain files from language detection
+assets/css/* linguist-vendored
+node_modules/* linguist-vendored
+vendor/* linguist-vendored
+
+# Mark CSS as supporting files, not primary
+*.css linguist-language=CSS
+*.js linguist-language=JavaScript
+
+# Set language overrides if needed
+*.sql linguist-language=SQL
